@@ -1,0 +1,59 @@
+citHeader("To cite IOBR in publications use:")
+
+bibentry(
+  bibtype  = "Article",
+  title    = "Enhancing Immuno-Oncology Investigations Through Multidimensional Decoding of Tumour Microenvironment with IOBR 2.0",
+  author   = c(
+             person("Dongqiang", "Zeng"),
+             person("Yiran", "Fang"),
+             person("Peng", "Luo"),
+             person("Wenjun", "Qiu"),
+             person("Shixiang", "Wang"),
+             person("Rongfang", "Shen"),
+             person("Wenchao", "Gu"),
+             person("Xiatong", "Huang"),
+             person("Qianqian", "Mao"),
+             person("Yonghong", "Lai"),
+             person("Xi", "Xu"),
+             person("Min", "Shi"),
+             person("Guangchuang", "Yu"),
+             person("Wangjun", "Liao")
+         ),
+  journal  = "Cell Reports Methods",
+  year     = "2024",
+  volume   = "4",
+  number   = "9",
+  pages    = "100910",
+  doi      = "10.1016/j.crmeth.2024.100910",
+  textVersion = "Zeng D, Fang Y, Luo P, Qiu W, Wang S, Shen R, Gu W, Huang X, Mao Q, Lai Y, Xu X, Shi M, Yu G, Liao W. Enhancing Immuno-Oncology Investigations Through Multidimensional Decoding of Tumour Microenvironment with IOBR 2.0. Cell Rep Methods. 2024;4(9):100910. doi:10.1016/j.crmeth.2024.100910."
+)
+
+citHeader("Please, also consider citing:")
+
+bibentry(
+  bibtype  = "Article",
+  title    = "IOBR: Multi-Omics Immuno-Oncology Biological Research to Decode Tumor Microenvironment and Signatures",
+  author   = c(
+             person("Dongqiang", "Zeng"),
+             person("Zilan", "Ye"),
+             person("Rongfang", "Shen"),
+             person("Guangchuang", "Yu"),
+             person("Jiani", "Wu"),
+             person("Yi", "Xiong"),
+             person("Rui", "Zhou"),
+             person("Wenjun", "Qiu"),
+             person("Na", "Huang"),
+             person("Li", "Sun"),
+             person("Xuejun", "Li"),
+             person("Jianping", "Bin"),
+             person("Yulin", "Liao"),
+             person("Min", "Shi"),
+             person("Wangjun", "Liao")
+             ),
+  journal  = "Frontiers in Immunology",
+  year     = "2021",
+  volume   = "12",
+  pages    = "687975",
+  doi      = "10.3389/fimmu.2021.687975",
+  textVersion = "Zeng D, Ye Z, Shen R, Yu G, Wu J, Xiong Y, Zhou R, Qiu W, Huang N, Sun L, Li X, Bin J, Liao Y, Shi M, Liao W. IOBR: Multi-Omics Immuno-Oncology Biological Research to Decode Tumor Microenvironment and Signatures. Front Immunol. 2021;12:687975. doi:10.3389/fimmu.2021.687975."
+)
