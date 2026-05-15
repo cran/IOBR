@@ -1,12 +1,12 @@
-0593056703038ee62d98359f9c778996 *DESCRIPTION
-7b75800e1a60ff7db1cb3c9e6481f11b *NAMESPACE
-425e850e87181fbabed9841fe6e9f3ca *NEWS.md
+2485fa90c8cf89f7450f79436bf97a2e *DESCRIPTION
+a431525adcf53fc27766a2b863e2e99f *NAMESPACE
+1ac0b577a0cb68817fd6f628a519f225 *NEWS.md
 0c28cb045925f35f74c58a21f14f6b9e *R/BinomialModel.R
 f973ff620f512c08ef7d16291a16b666 *R/CIBERSORT.R
 b8021c4b149357f508bd8e74d8a12673 *R/EPIC_helper.R
 fc624fd300014c780247a488af07e0ae *R/IPS_calculation.R
 6342178a5e4a700df641fa01f32dc72a *R/IPS_helper.R
-e73f0a5691cbcc8295030bc540b495aa *R/LR_cal.R
+06081782b78a5e16a8fda73aa408dc71 *R/LR_cal.R
 613ed7df42a985b59f39891b7bc16f75 *R/PrognosticModel.R
 35cbbcbd98589836f70f5e7f62dde764 *R/add_riskscore.R
 87ffdbbb9522807b059a54311c81685d *R/anno_eset.R
@@ -15,7 +15,7 @@ fa68d444f8eb5741dda8d0ee04ab622b *R/batch_cor.R
 dbc11a9784ba9307fbb50f97e615674f *R/batch_kruskal.R
 91c5a413d51eae2c3c9a6baf8a78fa0c *R/batch_pcc.R
 01bf69c3053f4104824709b00293c88f *R/batch_sig_surv_plot.R
-de1cba01d26abe3c7814b20a5d646e34 *R/batch_surv.R
+87077b5cc4eb21ce520376b02cefa96a *R/batch_surv.R
 054ae26febefbb8694a3ec2f4a2be461 *R/batch_wilcoxon.R
 5e0c5c231db9d4afcbc2e0eefb86d479 *R/best_cutoff.R
 c3353f94d478e9e0b780e6b8b977f23f *R/best_cutoff2.R
@@ -28,7 +28,7 @@ ded19e0e12f6ff0a475f21b9fd15d7e8 *R/creat_folder.R
 0249ebbfbb17262eb82aa8f968a6641a *R/data_doc.R
 30fc52adc7d678a0320511fb4d38a55e *R/deconvo_tme.R
 2b2fc3ed372ee5c7e8c8a275145c5821 *R/design_mytheme.R
-7e763b7a3ee0651d9af5c977e3809087 *R/download_data.R
+1a3f7418e4c37314476d59e0990edba8 *R/download_data.R
 3643b65bbf4482a8bd1c78a81202a966 *R/enrichment_barplot.R
 484c546a206ecbafd703f0fe173b1c7f *R/eset_distribution.R
 6aa0925fd5c0fae05391c56f4475de98 *R/estimate_helper.R
@@ -49,7 +49,7 @@ e05c56557b6f9ecc2e8a22bbade877d7 *R/generateRef_DEseq2.R
 3cc2e3bce421445345566b6223ce98c6 *R/getHRandCIfromCoxph.R
 db0b0a03ea59b2536e99196212b60018 *R/get_cols.R
 9ed27efc0b76d380537fb636673d894e *R/get_cor.R
-d7b9473227a509119449fab3a57a57a0 *R/get_cor_matrix.R
+b4808ae23ee8115e1f06166a81b3ec9b *R/get_cor_matrix.R
 ab68dd96c40cbda4ba39521465a409f2 *R/get_sig_sc.R
 bb5f225fc3bdfd2f35296dd01ad50000 *R/globalVariables.R
 bd64847bc9cfc7ac5bb088f714773e6c *R/high_var_fea.R
@@ -58,7 +58,7 @@ bd64847bc9cfc7ac5bb088f714773e6c *R/high_var_fea.R
 1ffed75af0cf86d40c71082d6128d23a *R/iobr_cor_plot.R
 2ff0921473d7caaadbb770c20ffda15c *R/iobr_deconvo_pipeline.R
 257dc91104c8f8a31b0dd977a48c3cd0 *R/iobr_deg.R
-92c792f5be0227d259892b416980de74 *R/iobr_pca.R
+fb98e15be41c25b075801099434ef9a2 *R/iobr_pca.R
 bc98327dcd3610f0dffdf0d456c3c5a9 *R/lasso_select.R
 bde8122bfe4700946bff3f6438d0d1af *R/log2eset.R
 632445017a4862a03e88593138708706 *R/make_mut_matrix.R
@@ -68,7 +68,7 @@ dbac2faf06855cf0034e689322297217 *R/merge_eset.R
 8a1e1bc6ec610078dc249385f40eb6ef *R/mouse2human_eset.R
 6f095ddb9b1769bf0cb7153c53e853a2 *R/output_sig.R
 e28a1c3114b657f288355a78509a079f *R/palettes.R
-4775bb8550dfe3ddf487dff125056b1e *R/percent_bar.R
+bc41073a5d17a9624bc742aa21ae4a49 *R/percent_bar.R
 005276168edb015df6ccb3eda05879ad *R/quantiseq.R
 4379573ba96075cedee6cf00987a8ff8 *R/quantiseq_helper.R
 1ca4ebd9a806ea92a462de9c123a0afb *R/random_strata_cells.R
@@ -80,13 +80,13 @@ ca33cc512b720e0258a98f3709986855 *R/remove_names.R
 2b53eaaa3a38d2d87c05a0f61f060c2b *R/scale_matrix.R
 598c034baa6483ff4f04ecce8af38524 *R/select_method.R
 8cc5f164a6ea9316faa531b445ba5caa *R/sigScore.R
-c24524229e7be65fcbae579226f2ccca *R/sig_box.R
+185f75ba6d4441cb4367bf464743fbd2 *R/sig_box.R
 14ecea31b031de7282f542b7d0e6ddbd *R/sig_box_batch.R
 9a5df860ecc8fb3d9a535db80262a585 *R/sig_forest.R
 91a5be093a4ed3899484f4e1cd87835f *R/sig_gsea.R
-e34d2334f4b6378e260ebf4bc66be351 *R/sig_heatmap.R
+f078f8d4a0454501d113918ed5fca110 *R/sig_heatmap.R
 b37440ae3aff742437950a7ab805d915 *R/sig_pheatmap.R
-9ea0a07a4ac0dcf9370ef272cb2264bf *R/sig_roc.R
+dce50ae7c9ba3f0cb1d9fb718369ddda *R/sig_roc.R
 58313d780c985298a8d987c3a01384fa *R/sig_surv_plot.R
 8cbc062b41da33c62df198b1e6201bec *R/subgroup_survival.R
 af3124d29e120ae07c2a6b6a0f7d79c4 *R/surv_group.R
@@ -97,7 +97,7 @@ af3124d29e120ae07c2a6b6a0f7d79c4 *R/surv_group.R
 fbd2393c426946b5e96d373f19e03b4e *R/transform_data.R
 1b61320368b3bdfaf5d430bd7694debc *R/xCell.R
 e43b1f0e75ed4714fb40f910f460351e *R/zzz.R
-72d265d6fc33fc0f0fbf4399eeea0805 *README.md
+806e8b7012cce8f11e28f732eae42b85 *README.md
 853e6485136c3bda7c7d55d2949a0d4f *build/vignette.rds
 58dd2d646e14869946e303373975de65 *data/imvigor210_pdata.rda
 0b6e8e876d8d69546a45f84920510864 *data/null_models.rda
@@ -111,7 +111,7 @@ b08cb9dc1c65f57f8bc6e40c4146263e *inst/CITATION
 12691f1a4a5fc9685a53c10925b3eb3b *inst/WORDLIST
 4ee2f7d84200b0e216d61e8ec726eaa2 *inst/doc/IOBR-user-manual.R
 79807b3b5753c28bdda4be1cc0756722 *inst/doc/IOBR-user-manual.Rmd
-e88792c815ad6b01ce75f564bcb7a1f5 *inst/doc/IOBR-user-manual.html
+a572e9adcfad3fa5c705d5859a67199f *inst/doc/IOBR-user-manual.html
 944af31812c3f2aa61526074604e1c77 *inst/extdata/genes.txt
 0d3b3651b4dcd7fb113c0942a4135292 *inst/extdata/probesets.txt
 68062c328f149db4344c048de9f5c9d6 *man/BinomialAUC.Rd
@@ -130,7 +130,7 @@ dcf067ca18e7565bf9482a972f9a29e7 *man/Enet.Rd
 2ccdeafaefac9d60a86ad1a231c4a475 *man/GetFractions.Abbas.Rd
 39c20111a141189277ac2f10c754c86a *man/GetOutlierGenes.Rd
 639bf109b17d87dd28a977031a151bd5 *man/IPS_calculation.Rd
-ce3df6e94e3a63552888d300233fc09b *man/LR_cal.Rd
+1879e6036fe4abe3b089fe913c4ab276 *man/LR_cal.Rd
 5e7a20ae9cc8fab2cddefd49b231863f *man/MCPcounter.estimate.Rd
 82b99cc65fda5ba7020af99270a9659c *man/ParseInputExpression.Rd
 c6ce8cf0949d5644581f537aabf95f4f *man/PlotAUC.Rd
@@ -164,7 +164,7 @@ d0f9f43bedeacff889e65f5ea7dc25ef *man/calculate_sig_score.Rd
 a12800120ecb98ebaa49eb4f2e6c3bbc *man/cell_bar_plot.Rd
 b02e5088b5cf70ae8d772a33581c6b55 *man/check_cancer_types.Rd
 57f949304bd2c7b5185ae76549268ce5 *man/check_eset.Rd
-51112e191d2eaad2373f541826c55beb *man/clear_iobr_cache.Rd
+a053d689e5a47decd46257eab205b31f *man/clear_iobr_cache.Rd
 da08e5f37c2f2c6961dfbc40740c7268 *man/combine_pd_eset.Rd
 e321d85b725e44f8b3a13ce4784d40ff *man/count2tpm.Rd
 17430bcb229829448c4c8346bd0e1a52 *man/creat_folder.Rd
@@ -185,7 +185,7 @@ eb25061c216500ef3381bc339fe180cf *man/deconvolute_timer.default.Rd
 792267a5823c02eb8788a53565d8d09d *man/dot-appendSignatures.Rd
 c29aba483a3fa1728af4c4af9e32839b *man/dot-build_mut_matrices.Rd
 2e9a5733ea9997400c71e46f5eb3e659 *man/dot-create_mut_matrix.Rd
-899ad7df8a2ea08226e9c2bc8e800fa4 *man/download_iobr_data.Rd
+f77caa152be76aea3fdc8d2e38264359 *man/download_iobr_data.Rd
 9895d39a8b3b3cf986faef960f7eb486 *man/enrichment_barplot.Rd
 e0432bf0e38b89e86e5d6ad257ecfd5f *man/eset_distribution.Rd
 99024476f0a90a7ef085fcb1bb031dc0 *man/estimateScore.Rd
@@ -213,6 +213,7 @@ aef794fcc680d95612bc88604d557569 *man/getHRandCIfromCoxph.Rd
 87bca2301d36adf047b3a1a7da34b3a2 *man/get_cor.Rd
 51dd7c80e6eca515e2506b766c0e9a48 *man/get_cor_matrix.Rd
 1a27f849e7cbc2466aeb273d54f08aba *man/get_default_mirrors.Rd
+5177324c38179052fe3ca56366fff5fd *man/get_iobr_cache_dir.Rd
 892254a93d3425f1bfc51ddaf2a2ed4a *man/get_sig_sc.Rd
 2afde921c890bb7b9a7cf9beba2366cf *man/gsva_use_new_api.Rd
 87dd9a6b5ba577b2534e61593376e7c1 *man/high_var_fea.Rd
@@ -256,11 +257,13 @@ b9fdd68ca6bd3c5343790e9535565a8c *man/rbind_iobr.Rd
 0546a0e8524b137005b70c5ead724838 *man/remove_batcheffect.Rd
 3acd9074127e62fff208f1c7c14a6f37 *man/remove_duplicate_genes.Rd
 bbc9a149bcb7dc9d5efc6470975a2c5d *man/remove_names.Rd
+acdc22cb1e47b4563d34ffabe4f4e48c *man/reset_iobr_cache_dir.Rd
 8b8764137fb7d54747886ba5b9e8373f *man/reset_iobr_mirrors.Rd
 844171b47a72ffe56f61d88a081239f0 *man/roc_time.Rd
 677b6c4ec490940a19bb92f3d4cdfe05 *man/scaleCounts.Rd
 d29e0517a73b27d9037de250b0296e8e *man/scale_matrix.Rd
 41b2df9354d7fdca2dd0923bd892b222 *man/select_method.Rd
+2528c7aa9916d492998a6331c07535b4 *man/set_iobr_cache_dir.Rd
 a3f74f11d9a3eece96817e1bc23d42a0 *man/sigScore.Rd
 c3dbbe1ba6fb0b922a55092f166e8c2f *man/sig_box.Rd
 7bc7df1216657a6ab5a1c44461449efc *man/sig_box_batch.Rd

@@ -1,6 +1,6 @@
 Package: IOBR
 Title: Immune Oncology Biological Research
-Version: 2.2.0
+Version: 2.2.1
 Authors@R: c(
     person("Dongqiang", "Zeng", , "interlaken@smu.edu.cn", role = "aut"),
     person("Yiran", "Fang", , "fyr_nate@163.com", role = "aut"),
@@ -50,7 +50,7 @@ Encoding: UTF-8
 LazyData: FALSE
 RoxygenNote: 7.3.3
 NeedsCompilation: no
-Packaged: 2026-04-22 13:01:08 UTC; wsx
+Packaged: 2026-05-15 10:23:27 UTC; wsx
 Author: Dongqiang Zeng [aut],
   Yiran Fang [aut],
   Shixiang Wang [aut, cre] (ORCID:
@@ -59,4 +59,4 @@ Author: Dongqiang Zeng [aut],
   Hongqian Qian [aut]
 Maintainer: Shixiang Wang <w_shixiang@163.com>
 Repository: CRAN
-Date/Publication: 2026-04-22 14:00:18 UTC
+Date/Publication: 2026-05-15 16:00:08 UTC
