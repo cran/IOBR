@@ -1,6 +1,6 @@
 Package: IOBR
 Title: Immune Oncology Biological Research
-Version: 2.2.1
+Version: 2.2.2
 Authors@R: c(
     person("Dongqiang", "Zeng", , "interlaken@smu.edu.cn", role = "aut"),
     person("Yiran", "Fang", , "fyr_nate@163.com", role = "aut"),
@@ -33,15 +33,16 @@ BugReports: https://github.com/IOBR/IOBR/issues
 Depends: R (>= 3.6.0)
 Imports: cli, dplyr, ggplot2, glmnet, GSVA, methods, purrr, rlang,
         stringr, survival, survminer, tibble, tidyr
-Suggests: BiocParallel, biomaRt, circlize, clusterProfiler,
-        ComplexHeatmap, corrplot, DESeq2, doParallel, DOSE, e1071,
-        easier, enrichplot, factoextra, FactoMineR, foreach, ggdensity,
-        ggpp, ggpubr, ggsci, gridExtra, Hmisc, knitr, limma, limSolve,
-        maftools, MASS, Matrix, msigdbr, NbClust, org.Hs.eg.db,
-        org.Mm.eg.db, patchwork, PMCMRplus, pracma, preprocessCore,
-        prettydoc, pROC, psych, RColorBrewer, reshape2, rmarkdown,
-        ROCR, sampling, scales, Seurat, SeuratObject, sva, testthat (>=
-        3.0.0), tidyHeatmap, timeROC, webr, WGCNA
+Suggests: BiocManager, BiocParallel, biomaRt, circlize,
+        clusterProfiler, ComplexHeatmap, corrplot, DESeq2, doParallel,
+        DOSE, e1071, easier, enrichplot, factoextra, FactoMineR,
+        foreach, ggdensity, ggpp, ggpubr, ggsci, gridExtra, Hmisc,
+        knitr, limma, limSolve, maftools, MASS, Matrix, msigdbr,
+        NbClust, org.Hs.eg.db, org.Mm.eg.db, patchwork, PMCMRplus,
+        pracma, preprocessCore, prettydoc, pROC, psych, RColorBrewer,
+        reshape2, rmarkdown, ROCR, sampling, scales, Seurat,
+        SeuratObject, sva, testthat (>= 3.0.0), tidyHeatmap, timeROC,
+        webr, WGCNA
 VignetteBuilder: knitr
 biocViews: GeneExpression, DifferentialExpression, ImmunoOncology,
         Transcriptomics, Clustering, Survival, Visualization
@@ -50,7 +51,7 @@ Encoding: UTF-8
 LazyData: FALSE
 RoxygenNote: 7.3.3
 NeedsCompilation: no
-Packaged: 2026-05-15 10:23:27 UTC; wsx
+Packaged: 2026-05-25 15:08:44 UTC; wsx
 Author: Dongqiang Zeng [aut],
   Yiran Fang [aut],
   Shixiang Wang [aut, cre] (ORCID:
@@ -59,4 +60,4 @@ Author: Dongqiang Zeng [aut],
   Hongqian Qian [aut]
 Maintainer: Shixiang Wang <w_shixiang@163.com>
 Repository: CRAN
-Date/Publication: 2026-05-15 16:00:08 UTC
+Date/Publication: 2026-05-25 16:10:09 UTC
