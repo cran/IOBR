@@ -138,23 +138,16 @@ these cases differently, you can remove the duplicates before calling
 \emph{EPIC}.
 }
 \examples{
-\donttest{
-melanoma_data <- load_data("melanoma_data")
-TRef <- load_data("TRef")
-res1 <- EPIC(melanoma_data$counts)
-res1$cellFractions
-res2 <- EPIC(melanoma_data$counts, TRef)
-res3 <- EPIC(bulk = melanoma_data$counts, reference = TRef)
-res4 <- EPIC(melanoma_data$counts, reference = "TRef")
-res5 <- EPIC(melanoma_data$counts, mRNA_cell_sub = c(
-  Bcells = 1,
-  otherCells = 5
-))
-# Various possible ways of calling EPIC function. res 1 to 4 should
-# give exactly the same outputs, and the elements res1$cellFractions
-# should be equal to the example predictions found in
-# melanoma_data$cellFractions.pred for these first 4 results.
-# The values of cellFraction for res5 will be different due to the use of
-# other mRNA per cell values for the B and other cells.
-}
+melanoma_counts <- matrix(abs(rnorm(80)), nrow = 20, ncol = 4)
+rownames(melanoma_counts) <- paste0("Gene", 1:20)
+colnames(melanoma_counts) <- paste0("Sample", 1:4)
+mock_ref <- list(
+  refProfiles = matrix(abs(rnorm(80)), nrow = 20, ncol = 4),
+  sigGenes = paste0("Gene", 1:10)
+)
+rownames(mock_ref$refProfiles) <- paste0("Gene", 1:20)
+colnames(mock_ref$refProfiles) <- c("Bcells", "CD4T", "CD8T", "NK")
+res1 <- EPIC(melanoma_counts, reference = mock_ref)
+if (!is.null(res1)) head(res1$cellFractions)
+
 }

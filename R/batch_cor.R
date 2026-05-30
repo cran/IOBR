@@ -27,14 +27,16 @@
 #' @export
 #'
 #' @examples
-#' # Load TCGA-STAD signature data
-#' sig_stad <- load_data("sig_stad")
+#' # Create a small example dataset
+#' set.seed(123)
+#' data_df <- as.data.frame(matrix(runif(100 * 10), 100, 10))
+#' colnames(data_df) <- paste0("Signature", 1:10)
 #'
 #' # Perform batch correlation
 #' results <- batch_cor(
-#'   data = sig_stad,
-#'   target = "CD_8_T_effector",
-#'   feature = colnames(sig_stad)[69:ncol(sig_stad)]
+#'   data = data_df,
+#'   target = "Signature1",
+#'   feature = colnames(data_df)[2:10]
 #' )
 #' head(results)
 batch_cor <- function(data,
@@ -42,6 +44,7 @@ batch_cor <- function(data,
                       feature,
                       method = c("spearman", "pearson", "kendall")) {
   # Input validation
+  if (is.null(data)) return(NULL)
   if (is.null(data) || !is.data.frame(data)) {
     cli::cli_abort("{.arg data} must be a non-null data frame.")
   }
@@ -149,12 +152,11 @@ batch_cor <- function(data,
 #' @export
 #'
 #' @examples
-#' sig_stad <- load_data("sig_stad")
-#' p_val <- exact_pvalue(
-#'   x = sig_stad$CD8.T.cells,
-#'   y = sig_stad$CD_8_T_effector,
-#'   method = "spearman"
-#' )
+#' # Simulate data
+#' set.seed(123)
+#' x <- rnorm(100)
+#' y <- rnorm(100)
+#' p_val <- exact_pvalue(x = x, y = y, method = "spearman")
 #' print(p_val)
 exact_pvalue <- function(x, y, method) {
   l <- sum(!is.na(x) & !is.na(y))

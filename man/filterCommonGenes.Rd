@@ -20,23 +20,15 @@ No return value. The function writes the merged dataset to the specified output 
 This function filters and merges a dataset with a set of common genes.
 }
 \examples{
-\donttest{
-# Create a sample input dataframe
+\dontrun{
 input_data <- data.frame(
   GeneSymbol = c("BRCA1", "TP53", "EGFR", "NOTCH1"),
   Value = c(10, 15, 8, 12),
   stringsAsFactors = FALSE
 )
-
-# Write the input data to temporary file
 input_file <- tempfile(fileext = ".txt")
 output_file <- tempfile(fileext = ".txt")
-write.table(input_data,
-  file = input_file, sep = "\t", row.names = TRUE,
-  quote = FALSE
-)
-
-# Call the filterCommonGenes function
+write.table(input_data, file = input_file, sep = "\t", row.names = TRUE, quote = FALSE)
 filterCommonGenes(input_file, output_file, id = "GeneSymbol")
 }
 }

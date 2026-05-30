@@ -4,14 +4,14 @@
 \alias{IPS_calculation}
 \title{Calculate Immunophenoscore (IPS)}
 \usage{
-IPS_calculation(project = NULL, eset, plot = FALSE)
+IPS_calculation(eset, project = NULL, plot = FALSE)
 }
 \arguments{
-\item{project}{Character string for project identifier. Default is NULL.}
-
 \item{eset}{Gene expression matrix with official human gene symbols (HGNC)
 as rownames. Expression values should be log2(TPM+1) or will be transformed
 if max value > 100.}
+
+\item{project}{Character string for project identifier. Default is NULL.}
 
 \item{plot}{Logical. Whether to generate immunophenogram plots. Default is FALSE.}
 }
@@ -32,18 +32,18 @@ composite score measuring immunophenotype based on four major categories:
 MHC molecules, immunomodulators, effector cells, and suppressor cells.
 }
 \examples{
-# IPS requires gene symbols as rownames
-# Create a simple example with gene symbols
+\dontrun{
 example_genes <- c(
   "HLA-A", "HLA-B", "HLA-C", "CD274", "PDCD1", "CTLA4",
   "CD8A", "CD8B", "GZMB", "PRF1", "FOXP3", "IL10"
 )
 sim_eset <- as.data.frame(matrix(
-  rnorm(length(example_genes) * 10, mean = 5, sd = 2),
-  nrow = length(example_genes), ncol = 10
+  rnorm(length(example_genes) * 5, mean = 5, sd = 2),
+  nrow = length(example_genes), ncol = 5
 ))
 rownames(sim_eset) <- example_genes
-colnames(sim_eset) <- paste0("Sample", 1:10)
+colnames(sim_eset) <- paste0("Sample", 1:5)
 ips_result <- IPS_calculation(eset = sim_eset, project = "Example", plot = FALSE)
-head(ips_result)
+if (!is.null(ips_result)) head(ips_result)
+}
 }

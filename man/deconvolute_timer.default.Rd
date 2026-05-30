@@ -25,15 +25,23 @@ and estimates immune cell type abundances.
 }
 \examples{
 \dontrun{
-# This example requires actual expression data files
-# Create a batch file with paths to expression data and cancer types
-batch_file <- "batch.csv"
-# batch.csv format: each row contains expression_file_path,cancer_type
-# Example content:
-# /path/to/exp1.txt,luad
-# /path/to/exp2.txt,brca
-outdir <- tempdir()
-args <- list(outdir = outdir, batch = batch_file)
-results <- deconvolute_timer.default(args)
+set.seed(123)
+immune <- load_data("immuneCuratedData")
+cancer_genes <- load_data("cancer_type_genes")
+if (!is.null(immune) && !is.null(cancer_genes)) {
+  gene_names <- unique(c(head(rownames(immune$genes), 30), cancer_genes[["stad"]]))
+  sample_names <- paste0("Sample", 1:2)
+  n_genes <- length(gene_names)
+  expr <- matrix(runif(n_genes * 2, 1, 100), n_genes, 2,
+                 dimnames = list(gene_names, sample_names))
+  tf <- tempfile(fileext = ".tsv")
+  write.table(as.data.frame(expr), tf, sep = "\t", quote = FALSE)
+  batch_tf <- tempfile(fileext = ".csv")
+  write.table(data.frame(path = tf, type = "stad"), batch_tf,
+              sep = ",", col.names = FALSE, row.names = FALSE, quote = FALSE)
+  args <- list(outdir = tempdir(), batch = batch_tf)
+  result <- deconvolute_timer.default(args)
+  if (!is.null(result)) head(result)
+}
 }
 }

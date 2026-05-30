@@ -30,23 +30,24 @@
 #' @import stringr
 #' @import ggplot2
 #' @import grid
-#'
 #' @examples
-#' # IPS requires gene symbols as rownames
-#' # Create a simple example with gene symbols
+#' \dontrun{
 #' example_genes <- c(
 #'   "HLA-A", "HLA-B", "HLA-C", "CD274", "PDCD1", "CTLA4",
 #'   "CD8A", "CD8B", "GZMB", "PRF1", "FOXP3", "IL10"
 #' )
 #' sim_eset <- as.data.frame(matrix(
-#'   rnorm(length(example_genes) * 10, mean = 5, sd = 2),
-#'   nrow = length(example_genes), ncol = 10
+#'   rnorm(length(example_genes) * 5, mean = 5, sd = 2),
+#'   nrow = length(example_genes), ncol = 5
 #' ))
 #' rownames(sim_eset) <- example_genes
-#' colnames(sim_eset) <- paste0("Sample", 1:10)
+#' colnames(sim_eset) <- paste0("Sample", 1:5)
 #' ips_result <- IPS_calculation(eset = sim_eset, project = "Example", plot = FALSE)
-#' head(ips_result)
-IPS_calculation <- function(project = NULL, eset, plot = FALSE) {
+#' if (!is.null(ips_result)) head(ips_result)
+#' }
+IPS_calculation <- function(eset, project = NULL, plot = FALSE) {
+  if (is.null(eset)) return(NULL)
+
   if (!is.matrix(eset) && !is.data.frame(eset)) {
     cli::cli_abort("{.arg eset} must be a matrix or data frame")
   }
@@ -66,6 +67,8 @@ IPS_calculation <- function(project = NULL, eset, plot = FALSE) {
   }
 
   IPSG <- load_data("ips_gene_set")
+  if (is.null(IPSG)) return(NULL)
+
   IPSG <- IPSG[IPSG$GENE %in% rownames(gene_expression), ]
 
   if (nrow(IPSG) == 0) {

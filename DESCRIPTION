@@ -1,6 +1,6 @@
 Package: IOBR
 Title: Immune Oncology Biological Research
-Version: 2.2.2
+Version: 2.2.3
 Authors@R: c(
     person("Dongqiang", "Zeng", , "interlaken@smu.edu.cn", role = "aut"),
     person("Yiran", "Fang", , "fyr_nate@163.com", role = "aut"),
@@ -44,6 +44,12 @@ Suggests: BiocManager, BiocParallel, biomaRt, circlize,
         SeuratObject, sva, testthat (>= 3.0.0), tidyHeatmap, timeROC,
         webr, WGCNA
 VignetteBuilder: knitr
+Additional_repositories: https://bioconductor.org/packages/3.22/bioc,
+        https://bioconductor.org/packages/3.22/data/annotation,
+        https://bioconductor.org/packages/3.22/data/experiment,
+        https://bioconductor.org/packages/3.23/bioc,
+        https://bioconductor.org/packages/3.23/data/annotation,
+        https://bioconductor.org/packages/3.23/data/experiment
 biocViews: GeneExpression, DifferentialExpression, ImmunoOncology,
         Transcriptomics, Clustering, Survival, Visualization
 Config/testthat/edition: 3
@@ -51,7 +57,7 @@ Encoding: UTF-8
 LazyData: FALSE
 RoxygenNote: 7.3.3
 NeedsCompilation: no
-Packaged: 2026-05-25 15:08:44 UTC; wsx
+Packaged: 2026-05-30 14:20:59 UTC; wsx
 Author: Dongqiang Zeng [aut],
   Yiran Fang [aut],
   Shixiang Wang [aut, cre] (ORCID:
@@ -60,4 +66,4 @@ Author: Dongqiang Zeng [aut],
   Hongqian Qian [aut]
 Maintainer: Shixiang Wang <w_shixiang@163.com>
 Repository: CRAN
-Date/Publication: 2026-05-25 16:10:09 UTC
+Date/Publication: 2026-05-30 15:30:02 UTC

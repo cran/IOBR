@@ -26,15 +26,17 @@ Loads internal datasets from the IOBR package. Supports both sysdata (internal)
 and exported data files included in the package.
 }
 \examples{
-# Load signature collection
+# Load signature collection (stored in sysdata, no download)
 sig_tme <- load_data("signature_tme")
 
-# Load expression data
-eset <- load_data("eset_stad")
-
-# Load color palette
+# Load color palette (stored in sysdata, no download)
 colors <- load_data("palette1")
 
 # Error handling with suggestions for similar names
 try(load_data("sign_tme")) # Will suggest "signature_tme"
+
+\dontrun{
+# Load expression data (triggers download from GitHub)
+eset <- load_data("eset_stad")
+}
 }

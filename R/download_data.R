@@ -18,21 +18,8 @@
 #' @export
 #'
 #' @examples
-#' \donttest{
-#' # Download TCGA STAD signature data
+#' \dontrun{
 #' tcga_sig <- download_iobr_data("tcga_stad_sig")
-#'
-#' # Download with custom mirrors
-#' eset <- download_iobr_data("eset_stad",
-#'   mirrors = c(
-#'     "https://ghproxy.vip/https://github.com",
-#'     "https://gh-proxy.org/https://github.com"
-#'   )
-#' )
-#'
-#' # Use custom cache directory (use tempdir() for examples)
-#' options(IOBR.cache_dir = tempdir())
-#' data <- download_iobr_data("lm22")
 #' }
 download_iobr_data <- function(name, force = FALSE, verbose = TRUE,
                                mirrors = get_default_mirrors(),
@@ -66,6 +53,35 @@ download_iobr_data <- function(name, force = FALSE, verbose = TRUE,
       return(env[[obj_names[1]]])
     } else {
       return(env[[name]])
+    }
+  }
+
+  # Check for internet connection if no local file exists
+  if (!file.exists(cache_file)) {
+    has_internet <- function() {
+      # Test both Google and Baidu, return TRUE if either works
+      # Using sequential approach to avoid fork() issues on macOS
+      urls <- c("https://www.google.com", "https://www.baidu.com")
+      for (url_str in urls) {
+        result <- tryCatch({
+          con <- url(url_str)
+          tryCatch({
+            readLines(con, n = 1)
+            TRUE
+          }, error = function(e) FALSE,
+            finally = {
+              tryCatch(close(con), error = function(e) NULL)
+            })
+        }, error = function(e) FALSE)
+        if (result) return(TRUE)
+      }
+      FALSE
+    }
+
+    if (!has_internet()) {
+      cli::cli_alert_warning("No internet connection available and dataset {.val {name}} is not in cache.")
+      cli::cli_alert_info("To comply with CRAN policies, returning {.code NULL} instead of an error.")
+      return(NULL)
     }
   }
 
@@ -129,10 +145,8 @@ download_iobr_data <- function(name, force = FALSE, verbose = TRUE,
     sprintf("2. Save it to: {.path %s}", file.path(cache_dir, paste0(name, ".rda"))),
     "3. Run your code again - the data will be loaded from cache"
   ))
-  stop(sprintf(
-    "Failed to download '%s' from all %d mirrors. Please download manually.",
-    name, length(mirrors)
-  ))
+  cli::cli_alert_info("To comply with CRAN policies, returning {.code NULL} instead of an error.")
+  return(NULL)
 }
 
 #' Get Default Download Mirrors
@@ -176,15 +190,8 @@ get_default_mirrors <- function() {
 #' @export
 #'
 #' @examples
-#' \donttest{
-#' # Add a custom mirror to try first
+#' \dontrun{
 #' add_iobr_mirror("https://my-mirror.com/https://github.com")
-#'
-#' # Add mirror to try before default GitHub
-#' add_iobr_mirror("https://fast-mirror.org", position = "before_github")
-#'
-#' # Download with the new mirror
-#' data <- download_iobr_data("BRef")
 #' }
 add_iobr_mirror <- function(url, position = c("first", "last", "before_github")) {
   position <- match.arg(position)
@@ -269,17 +276,21 @@ reset_iobr_mirrors <- function() {
 #' Get IOBR Cache Directory
 #'
 #' @description Returns the current cache directory for IOBR downloaded data.
+#' To comply with CRAN policies, the default cache directory is a session-specific
+#' temporary directory. Users can opt-in to a persistent cache by setting
+#' `options(IOBR.cache_dir = "your/path")` or using `set_iobr_cache_dir()`.
+#'
 #' The cache directory is determined in the following priority order:
 #' 1. Function argument `cache_dir` (if provided)
 #' 2. Option `IOBR.cache_dir` (if set via `options()`)
-#' 3. Default system cache location via `tools::R_user_dir()`
+#' 3. Default: A session-specific temporary directory (`file.path(tempdir(), "IOBR_cache")`)
 #'
 #' @param cache_dir Optional character string to override the current setting.
 #' @return Character string with the cache directory path.
 #' @export
 #'
 #' @examples
-#' # Get current cache directory
+#' # Get current cache directory (defaults to tempdir)
 #' get_iobr_cache_dir()
 #'
 #' # Set custom cache directory via options (use tempdir() for examples)
@@ -299,8 +310,8 @@ get_iobr_cache_dir <- function(cache_dir = NULL) {
     return(path.expand(option_cache))
   }
 
-  # Default to R user cache directory
-  tools::R_user_dir("IOBR", which = "cache")
+  # Default to temporary directory to satisfy CRAN policies
+  file.path(tempdir(), "IOBR_cache")
 }
 
 #' Set IOBR Cache Directory
@@ -308,6 +319,9 @@ get_iobr_cache_dir <- function(cache_dir = NULL) {
 #' @description Sets a custom cache directory for IOBR downloaded data.
 #' This is useful when you want to store cached data in a specific location,
 #' such as a shared network drive or a custom directory.
+#'
+#' To use the standard system cache location (persistent across sessions),
+#' you can use: `set_iobr_cache_dir(tools::R_user_dir("IOBR", which = "cache"))`.
 #'
 #' @param path Character string. The path to the cache directory.
 #' @param create Logical. Whether to create the directory if it doesn't exist.
@@ -320,6 +334,9 @@ get_iobr_cache_dir <- function(cache_dir = NULL) {
 #' \donttest{
 #' # Set a custom cache directory (use tempdir() for examples)
 #' set_iobr_cache_dir(tempdir())
+#'
+#' # Use standard system cache (persistent)
+#' # set_iobr_cache_dir(tools::R_user_dir("IOBR", which = "cache"))
 #'
 #' # Check the current cache directory
 #' get_iobr_cache_dir()
@@ -350,7 +367,8 @@ set_iobr_cache_dir <- function(path, create = TRUE) {
 
 #' Reset IOBR Cache Directory to Default
 #'
-#' @description Resets the cache directory to the default system location.
+#' @description Resets the cache directory to the default session-specific
+#' temporary directory.
 #' @return Invisibly returns the default cache directory path.
 #' @export
 #'
@@ -358,8 +376,8 @@ set_iobr_cache_dir <- function(path, create = TRUE) {
 #' reset_iobr_cache_dir()
 reset_iobr_cache_dir <- function() {
   options(IOBR.cache_dir = NULL)
-  default_cache <- tools::R_user_dir("IOBR", which = "cache")
-  cli::cli_alert_success("Cache directory reset to default: {.path {default_cache}}")
+  default_cache <- file.path(tempdir(), "IOBR_cache")
+  cli::cli_alert_success("Cache directory reset to session-specific temporary directory: {.path {default_cache}}")
   invisible(default_cache)
 }
 

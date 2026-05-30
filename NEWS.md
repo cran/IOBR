@@ -1,3 +1,18 @@
+# IOBR 2.2.3
+
+## Improvements
+
+* **CRAN Compliance**: Fixed policy violations regarding home directory usage and internet access during checks.
+  - Default cache directory changed from `tools::R_user_dir()` to a session-specific temporary directory.
+  - Added internet connectivity check for both Google and Baidu (for Chinese users).
+  - Fixed example handling: replaced `if(interactive())` with proper `\dontrun{}` blocks for genuinely non-runable examples (network-dependent, user files required, Suggested packages). CRAN clarified that `if(interactive())` does NOT skip examples in checks.
+  - Minimized `\dontrun{}` usage to 22 blocks with documented reasons; functions that can run offline use simulated data.
+  - Users can still opt-in to persistent caching via `set_iobr_cache_dir()` or `options(IOBR.cache_dir = ...)`.
+
+## Bug Fixes
+
+* Fixed `count2tpm()` to return `NULL` gracefully when annotation data is unavailable offline.
+
 # IOBR 2.2.2
 
 ## Improvements

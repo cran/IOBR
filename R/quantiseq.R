@@ -36,15 +36,20 @@
 #' @author Finotello F, et al. (adapted for IOBR)
 #'
 #' @examples
-#' lm22 <- load_data("lm22")
-#' common_genes <- rownames(lm22)[1:500]
-#' tpm_matrix <- as.data.frame(matrix(
-#'   rnorm(length(common_genes) * 5, mean = 5, sd = 2),
-#'   nrow = length(common_genes), ncol = 5
-#' ))
-#' rownames(tpm_matrix) <- common_genes
-#' colnames(tpm_matrix) <- paste0("Sample", 1:5)
-#' results <- deconvolute_quantiseq.default(mix.mat = tpm_matrix)
+#' \dontrun{
+#' quantiseq_data <- load_data("quantiseq_data")
+#' if (!is.null(quantiseq_data)) {
+#'   common_genes <- rownames(quantiseq_data$TIL10_signature)
+#'   tpm_matrix <- as.data.frame(matrix(
+#'     abs(rnorm(length(common_genes) * 2, mean = 5, sd = 2)),
+#'     nrow = length(common_genes), ncol = 2
+#'   ))
+#'   rownames(tpm_matrix) <- common_genes
+#'   colnames(tpm_matrix) <- paste0("Sample", 1:2)
+#'   results <- deconvolute_quantiseq.default(mix.mat = tpm_matrix)
+#'   if (!is.null(results)) head(results)
+#' }
+#' }
 deconvolute_quantiseq.default <- function(mix.mat,
                                           arrays = FALSE,
                                           signame = "TIL10",
@@ -52,10 +57,13 @@ deconvolute_quantiseq.default <- function(mix.mat,
                                           mRNAscale = TRUE,
                                           method = c("lsei", "hampel", "huber", "bisquare"),
                                           rmgenes = "unassigned") {
+
+  if (is.null(mix.mat)) return(NULL)
+
   method <- rlang::arg_match(method)
 
-  if (is.null(mix.mat) || nrow(mix.mat) == 0) {
-    cli::cli_abort("{.arg mix.mat} cannot be NULL or empty.")
+  if (nrow(mix.mat) == 0) {
+    cli::cli_abort("{.arg mix.mat} cannot be empty.")
   }
 
   cli::cli_alert_info("Running quanTIseq deconvolution module")
@@ -69,6 +77,8 @@ deconvolute_quantiseq.default <- function(mix.mat,
   listsig <- c("TIL10")
 
   quantiseq_ref <- load_data("quantiseq_data")
+  if (is.null(quantiseq_ref)) return(NULL)
+
   if (signame %in% listsig) {
     sig.mat <- quantiseq_ref$TIL10_signature
     mRNA <- quantiseq_ref$TIL10_mRNA_scaling

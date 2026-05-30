@@ -34,14 +34,28 @@
 #' @export
 #'
 #' @examples
-#' \donttest{
-#' # Load TCGA count data
-#' eset_stad <- load_data("eset_stad")
-#'
+#' # Simulated count data
+#' set.seed(123)
+#' count_matrix <- matrix(
+#'   rpois(100, lambda = 10),
+#'   ncol = 5,
+#'   dimnames = list(
+#'     paste0("ENSG00000", 101:120),
+#'     paste0("Sample", 1:5)
+#'   )
+#' )
+#' # Simulated effective length data
+#' eff_len <- data.frame(
+#'   id = paste0("ENSG00000", 101:120),
+#'   symbol = paste0("Gene", 1:20),
+#'   eff_length = runif(20, 500, 5000)
+#' )
 #' # Transform to TPM using local gene annotation
-#' eset <- count2tpm(countMat = eset_stad, source = "local", idType = "ensembl")
+#' eset <- count2tpm(
+#'   countMat = count_matrix, effLength = eff_len,
+#'   id = "id", length = "eff_length", gene_symbol = "symbol"
+#' )
 #' head(eset)
-#' }
 count2tpm <- function(countMat,
                       idType = "Ensembl",
                       org = c("hsa", "mmus"),
@@ -51,6 +65,8 @@ count2tpm <- function(countMat,
                       gene_symbol = "symbol",
                       length = "eff_length",
                       check_data = FALSE) {
+
+  if (is.null(countMat)) return(NULL)
   # Validate arguments
   org <- rlang::arg_match(org)
   source <- rlang::arg_match(source)
@@ -80,6 +96,12 @@ count2tpm <- function(countMat,
     result <- .get_lengths_from_biomart(countMat, idType, org)
   } else {
     result <- .get_lengths_local(countMat, idType, org)
+  }
+
+  # Handle NULL result (offline environment)
+  if (is.null(result)) {
+    cli::cli_alert_info("Returning NULL - annotation data not available offline")
+    return(NULL)
   }
 
   countMat <- result$countMat
@@ -235,6 +257,12 @@ count2tpm <- function(countMat,
 .get_lengths_human <- function(countMat, idType) {
   anno_grch38 <- load_data("anno_grch38")
 
+  if (is.null(anno_grch38)) {
+    cli::cli_alert_warning("No annotation data available (anno_grch38)")
+    cli::cli_alert_info("Returning NULL for offline environment")
+    return(NULL)
+  }
+
   cli::cli_alert_info(
     "Using local annotation (anno_grch38) for TPM conversion"
   )
@@ -266,6 +294,12 @@ count2tpm <- function(countMat,
 # Helper: Get lengths for mouse genes
 .get_lengths_mouse <- function(countMat, idType) {
   anno_gc_vm32 <- load_data("anno_gc_vm32")
+
+  if (is.null(anno_gc_vm32)) {
+    cli::cli_alert_warning("No annotation data available (anno_gc_vm32)")
+    cli::cli_alert_info("Returning NULL for offline environment")
+    return(NULL)
+  }
 
   cli::cli_alert_info(
     "Using local annotation (anno_gc_vm32) for TPM conversion"

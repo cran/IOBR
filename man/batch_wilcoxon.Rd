@@ -42,14 +42,18 @@ distribution of specified features between two groups. Computes p-values,
 adjusts for multiple testing, and ranks features by significance.
 }
 \examples{
-# Load TCGA-STAD signature data
-sig_stad <- load_data("sig_stad")
-
+# Create small example data
+set.seed(123)
+test_data <- data.frame(
+  Gender = rep(c("Male", "Female"), each = 50),
+  Signature1 = rnorm(100),
+  Signature2 = rnorm(100)
+)
 # Compare features by gender
 res <- batch_wilcoxon(
-  data = sig_stad,
+  data = test_data,
   target = "Gender",
-  feature = colnames(sig_stad)[69:ncol(sig_stad)]
+  feature = c("Signature1", "Signature2")
 )
 head(res)
 }
